@@ -182,6 +182,11 @@ the way an app would, so it states values rather than defining tokens, and stays
   `@font-face` rule its package's `index.css` publishes with the `url()` pointing at the package file and
   `size-adjust` set to the share measured for the pair; it does **NOT** import that package, whose faces would load
   unscaled under their own family, and the suite fails once the restated faces drift from those the package publishes
+- every font token **ALWAYS** follows the face it leads with by a metric-matched fallback, `Skin <Face> Fallback`,
+  declared in the preset over platform faces alone (`local()`, never `url()`), with `size-adjust`, `ascent-override`,
+  `descent-override` and `line-gap-override` stated, and one face per design system weight, regular for `100 500` and
+  bold for `600 900`, since a synthesised bold runs wider than the face it stands in for; see
+  [Fallback Faces](#fallback-faces)
 - `package.json` exports it as `./presets/<name>.css`, with the `@metreeca/source` condition, one entry per preset and
   never a wildcard
 
@@ -196,6 +201,31 @@ The face packages stay in `dependencies`, so every consumer installs the faces o
 `src/index.test.ts` holds every file under `presets/` to the rules above, so a new preset is checked once it is added
 there. It does **not** hold a preset's colours to their budget: `colors.test.ts` evaluates the default colours alone,
 so a preset restating a colour anchor rechecks its figures as an app supplying its own brand does.
+
+## Fallback Faces
+
+Every preset face swaps in (`font-display: swap`), so until it arrives text is set in the next family of its stack,
+and the swap resizes everything sized to its content: `max-content` grid columns, `nowrap` labels, intrinsic buttons.
+The fallback faces keep those sizes across the swap. Mono faces match exactly, since every glyph shares one advance;
+proportional faces match on average width, weighted by English letter frequencies, and keep a residual near 1%.
+
+- **Platform faces chosen by metric set**: one fallback face takes one `size-adjust` whatever `local()` source
+  resolves, so it lists only faces sharing an advance; the vertical overrides are absolute and hold for every source.
+  The faces each preset stands on, and the residual they leave, are stated in the preset beside its fallback faces
+- **Two names per source**: each `local()` names the face's full name and its PostScript name, the two names browsers
+  match it against, never its family name
+- **Measured, NOT derived by eye**: the figures come from `fontTools` reading the `*-latin-wght-normal.woff2` file of
+  each face, instanced at 400 and 600, against the macOS system faces; the overrides are divided by the fallback's
+  `size-adjust`, which scales them too
+- **Re-derived on change**: retuning a mono share or upgrading a face package re-measures its fallback
+
+Checked in Chrome on macOS, a sample line in each fallback lands within 1.1% of its web face in width and at the same
+height, the mono faces within 0.02%.
+
+> [!WARNING]
+>
+> The suite checks that every fallback is declared, drawn from the platform and covers both weights, **NOT** its
+> figures: the platform faces it is measured against are absent from the CI runners, so a stale figure ships unnoticed.
 
 # Layering
 

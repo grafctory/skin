@@ -16,6 +16,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Matched mono faces - each preset scales its mono face to the lowercase of its text face, nudged down for the wider
   advance, Roboto Mono to `93%` and Geist Mono to `96%`, so anything set in `fontFamilyMono` matches the text around
   it, a label a component sets in the mono face as much as a code span, with no size restated beside the face
+- Matched fallback faces - each preset follows every face with a platform face scaled to its metrics at the text and
+  strong weights, so tables, grids and labels sized to their content keep their width when the bundled faces arrive
 - `borderColorField` - the edge of a field, held to the 3:1 a control boundary takes on the page, the striped row and
   the edit background, which `markup/forms.css` draws around inputs, text areas and selects
 - `colorStrongOver` - text colour for a fill painted in the strong accent, taking white or black, whichever contrasts

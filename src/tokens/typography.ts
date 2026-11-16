@@ -24,8 +24,12 @@
  *
  * **Faces** — `fontFamily` carries the body face, `fontFamilyHeading` the one a title is set in and `fontFamilyMono`
  * the one a code span or a figure aligns on. Each defaults to a platform face, which costs no download, and a preset
- * sets all three in faces it bundles, as `presets/roboto.css` does with the Roboto faces of the Metreeca brand. An app
- * supplying a face of its own loads it and restates a generic stack after it, which covers the text until it loads.
+ * sets all three in faces it bundles, as `presets/roboto.css` does with the Roboto faces of the Metreeca brand.
+ *
+ * Until a face loads, text is set in the next face of its stack. Every preset shipped here follows each face with a
+ * platform face scaled to its metrics, so labels, buttons and columns sized to their content keep their width when the
+ * face arrives. An app supplying a face of its own loads it and restates a generic stack after it, led by a fallback
+ * face scaled the same way through the `size-adjust` and metric override descriptors of its `@font-face` rules.
  *
  * A mono face runs wider than the text face it is paired with. Every preset shipped here scales its mono face to match
  * its text face, so anything set in `fontFamilyMono` matches the text around it with no size of its own. An app

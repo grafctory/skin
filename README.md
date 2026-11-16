@@ -59,8 +59,9 @@ import "@metreeca/skin/presets/roboto.css";
 Every stylesheet keeps the Metreeca colours unless it states colours of its own, so the presets shipped today differ in
 their faces alone. An app overrides a preset exactly as it overrides `index.css`, and its rules win over the preset.
 
-A preset bundles its faces with the app through package imports, which a bundler such as Vite resolves. Linked from the
-document head without one, it skips them and sets the type in the generic fallbacks after them.
+A preset bundles its faces with the app through package imports, which a bundler such as Vite resolves. Until they
+load, it sets the text in platform faces scaled to their metrics, so tables, grids and labels sized to their content
+keep their width when the faces arrive. Linked from the document head without a bundler, it keeps those platform faces.
 
 A bundle carries only the faces of the stylesheet an app imports: an app on `index.css` ships no face file, and the
 presets it does not import never reach its build, although every preset's face packages are installed with this one.

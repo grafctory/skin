@@ -201,12 +201,27 @@ describe("presets", () => {
 			style: descriptor("font-style"),
 			weight: descriptor("font-weight"),
 			src: descriptor("src").match(/url\(["']?([^"')]+)/)?.[1] ?? "",
+			locals: Array.from(descriptor("src").matchAll(/local\(["']([^"']+)["']\)/g), ([ , local ]) => local),
 			range: descriptor("unicode-range").replaceAll(/\s+/g, ""),
 			display: descriptor("font-display"),
-			adjust: descriptor("size-adjust")
+			adjust: descriptor("size-adjust"),
+			ascent: descriptor("ascent-override"),
+			descent: descriptor("descent-override"),
+			gap: descriptor("line-gap-override")
 		};
 
 	});
+
+	/*
+	 * The text and strong weights the design system ships, which a fallback face is matched at.
+	 */
+
+	const weights = [ "--skin--font-weight", "--skin--font-weight-strong" ].map(token => Number(
+		readFileSync(new URL("./tokens/typography.css", import.meta.url), "utf-8")
+			.match(new RegExp(`@property\\s+${ token }\\s*\\{[^}]*initial-value:\\s*(\\d+)`))?.[1]
+	));
+
+	const percentage = /^\d+(\.\d+)?%$/;
 
 	describe.each(names)("%s", name => {
 
@@ -221,6 +236,14 @@ describe("presets", () => {
 		const faces = parse(text);
 
 		const own = new Map(faces.map(({ family }) => [ family, faces.filter(face => face.family === family) ]));
+
+		const stacks = assignments
+			.filter(([ token ]) => token.startsWith("--skin--font-family"))
+			.map(([ , value ]) => Array.from(value.matchAll(/"([^"]+)"/g), ([ , family ]) => family));
+
+		const fallback = (family: string) => `Skin ${ family.replace(/^Skin /, "").replace(/ Variable$/, "") } Fallback`;
+
+		const fallbacks = stacks.map(([ leading = "" ]) => fallback(leading));
 
 		it("builds on the design system entry", () => {
 
@@ -293,15 +316,71 @@ describe("presets", () => {
 		});
 
 		/*
+		 * Until a face arrives, text is laid out in the face after it, and the swap resizes everything sized to its
+		 * content. A fallback face scaled to the metrics of the face it stands in for keeps those sizes when it swaps.
+		 */
+
+		describe("fallbacks", () => {
+
+			it("follows every face its font stacks lead with by a fallback face", () => {
+
+				expect(stacks.map(([ , next ]) => next)).toEqual(fallbacks);
+
+			});
+
+			it("draws fallback faces from the platform alone", () => {
+
+				expect(fallbacks.map(family => (own.get(family) ?? []).length > 0 && (own.get(family) ?? []).every(
+					({ src, locals }) => src === "" && locals.length > 0
+				))).toEqual(fallbacks.map(() => true));
+
+			});
+
+			it("states the metrics of every fallback face", () => {
+
+				expect(fallbacks.flatMap(family => own.get(family) ?? [])
+					.filter(({ adjust, ascent, descent, gap }) => ![ adjust, ascent, descent, gap ].every(
+						metric => percentage.test(metric)
+					))
+				).toEqual([]);
+
+			});
+
+			/*
+			 * A regular face synthesised in bold runs wider than the bold face it stands in for, so each design system
+			 * weight takes a platform face of its own, matched to the face it stands in for at that very weight.
+			 */
+
+			it("matches each design system weight with a fallback face of its own", () => {
+
+				const covers = (range: string, weight: number) => {
+
+					const [ lower = 0, upper = lower ] = range.split(/\s+/).map(Number);
+
+					return lower <= weight && weight <= upper;
+
+				};
+
+				expect(fallbacks.map(family => weights.map(weight => (own.get(family) ?? []).findIndex(
+					({ weight: range }) => covers(range, weight)
+				)))).toEqual(fallbacks.map(() => weights.map((weight, index) => index)));
+
+			});
+
+		});
+
+		/*
 		 * A face declared here restates the faces its package publishes, so a package splitting or merging its subsets
 		 * fails the suite rather than leaving characters to fall back to the platform face.
 		 */
 
 		it("declares its own faces as their package publishes them", () => {
 
-			const restated = Array.from(own.values(), faces => faces.map(({ family, adjust, ...face }) => face));
+			const bundled = Array.from(own.values()).filter(faces => faces.every(({ src }) => src !== ""));
 
-			const published = Array.from(own.values(), faces => {
+			const restated = bundled.map(faces => faces.map(({ family, adjust, ...face }) => face));
+
+			const published = bundled.map(faces => {
 
 				const pkg = faces[0]?.src.match(/^@fontsource-variable\/[^/]+/)?.[0] ?? "";
 
