@@ -39,7 +39,7 @@
 
 /*
  * The base size follows the reader's own setting and the window rather than what it sits in, holding its rhythm
- * wherever embedded. It grows by an eighth across laptop windows and by a quarter only past the widest of them, on
+ * wherever embedded. It grows a little across laptop windows and further only past the widest of them, on
  * desktop windows where text read from further away would otherwise look small, and is capped there; the two size
  * variants stay relative to whatever they sit in, so a subtree sized apart keeps their ratio to its own text.
  */

@@ -59,8 +59,8 @@ h2, h3, h4, h5, h6 {
 
 /*
  * Each level below the first is told from the next by one cue at a time, so a deep outline stays readable in a column
- * without the sizes running away: the second stands an eighth over the heading size, the third and fourth take it as
- * it stands, the fourth in the quieter colour of a label, and the last two are set smaller still in that colour.
+ * without the sizes running away: the second stands just larger than the third, the fourth matches the third in size
+ * and departs from it in the quieter colour of a label, and the last two are set smaller still in that colour.
  */
 
 h2 {

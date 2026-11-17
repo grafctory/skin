@@ -21,7 +21,7 @@
  *
  * An alert sits on the page behind a bar in the stroke role of its step, which paints its title and any glyph beside
  * it as well, while the body keeps the page text: the colour stands alongside the wording, never alone. The bar takes
- * the narrowest spacing as its width, the scale holding no border width heavy enough to carry a mark on its own.
+ * its width from the spacing scale, the scale holding no border width heavy enough to carry a mark on its own.
  *
  * A note states useful information without passing a verdict, which is what the note step says, and the important
  * alert singles out what a reader must not miss, which is what the flag step says.

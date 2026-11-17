@@ -414,10 +414,10 @@
  * look attribute names its own: strong stands out from the page, subtle stays close to it and the plain name sits
  * between them. The neutral column takes black, gray and white for its three steps.
  *
- * The values are muted as the pickers of document editors keep them, at chroma 0.04 to 0.19 rather than at the
- * gamut's edge, on three steps in OKLab lightness from the page: near 0.91, 0.66 to 0.69 and 0.49 on the light page,
- * and near 0.37, 0.57 and 0.78 on the dark one, where a tint is capped at chroma 0.06. Gray sits on the plain step,
- * while black and white keep the ends of the scale their names promise, beyond the lightness the five hues span.
+ * The values are muted as the pickers of document editors keep them, rather than set at the gamut's edge, on three
+ * steps spaced in OKLab lightness from the page, the tints on the dark page held to a lower chroma still. Gray sits
+ * on the plain step, while black and white keep the ends of the scale their names promise, beyond the lightness the
+ * five hues span, so the neutral column frames the hues rather than sitting among them on either page.
  *
  * The plain step is the one a picker names red or blue, so it is the one an author reaches for first and most often
  * sets as text. It holds 3:1 against the page, the WCAG minimum for large text and for a mark such as an underline

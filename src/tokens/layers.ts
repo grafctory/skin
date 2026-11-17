@@ -30,7 +30,7 @@
  * opened inside a modal takes `zIndexDropdown` and still paints above the modal, whose own value applies in the
  * context enclosing it. A widget therefore never adds a step to clear an ancestor.
  *
- * **Steps** — spaced by a hundred, leaving an app room to slot a thing between two without restating the ladder.
+ * **Steps** — spaced wide apart, leaving an app room to slot a thing between two without restating the ladder.
  *
  * @module layers
  */

@@ -27,8 +27,8 @@
 @import "@fontsource-variable/roboto-condensed";
 
 /*
- * Roboto Mono shares Roboto's x-height and runs 36% wider, so it is declared at 93%: lowercase matched to the text,
- * then nudged down to offset the width, so it matches wherever the mono family is set. The faces restate those its
+ * Roboto Mono shares Roboto's x-height and runs 36% wider, so it is scaled to match the lowercase of the text, then
+ * nudged down to offset the width, so it matches wherever the mono family is set. The faces restate those its
  * package publishes, differing only in the family they are named under and in the size adjustment.
  */
 

@@ -167,7 +167,7 @@ nav {
     & > ul:has(> li > :is(ul, details)) > li {
 
         &:has(> ul, > details[open]) + li, & + li:has(> ul, > details[open]) {
-            margin-top: calc(var(--skin--spacing-100) + var(--skin--spacing-025)); /* Between the 100 and 150 steps. */
+            margin-top: calc(var(--skin--spacing-100) + var(--skin--spacing-025)); /* A gap no single step holds. */
         }
 
         & > ul {

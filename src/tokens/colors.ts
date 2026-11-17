@@ -108,7 +108,7 @@
  * **Neutral states** — `backgroundColorHoverNeutral` and `backgroundColorPressedNeutral` answer the pointer on a
  * control answering to no accent, such as a borderless button or a tool in a tray. They are translucent, so they
  * deepen whatever surface the control stands on by the same step: a control in a sunken tray changes as visibly as
- * one on the page. The press steps twice as far from the surface as the hover. The text, the label, an enabled
+ * one on the page. The press steps further from the surface than the hover. The text, the label, an enabled
  * control and the focus ring hold their budgets over either state on the page, the stripe, the edit field and the
  * sunken surface. The overlay is not among them, so a control on a menu, a popover or a dialog takes the accent
  * states instead. Like the accent fills, they are painted by no base rule and are reserved for component controls.

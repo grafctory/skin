@@ -36,8 +36,8 @@
  * supplying a mono face scales it the same way, through the `size-adjust` descriptor of its `@font-face` rules, so it
  * stays matched wherever a component sets it. The platform faces vary by system and are left unscaled.
  *
- * **Sizes** — `fontSize` follows the reader's setting and grows by a quarter on desktop windows alone, while
- * `fontSizeSmall` and `fontSizeLarge` follow whatever they sit in, keeping their ratio inside a subtree sized apart.
+ * **Sizes** — `fontSize` follows the reader's setting and grows on wider windows, while `fontSizeSmall` and
+ * `fontSizeLarge` follow whatever they sit in, keeping their ratio inside a subtree sized apart.
  *
  * The page sets the base size on `body` and leaves the root at the reader's setting, so `fontSize` resolves to the same
  * length at every depth and a `rem` always means the reader's setting. A measure meant to follow the base text size is

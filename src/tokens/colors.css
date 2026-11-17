@@ -270,12 +270,11 @@
  * lightness it needs to hold AA contrast. A role whose share differs by scheme states a light-dark() pair of
  * derivations rather than a rule per scheme, so a pinned subtree follows it with nothing restated.
  *
- * A role mixing the text anchor towards the page takes seven to ten more points of it in the dark scheme than in the
- * light one, because the two ends behave nothing alike: white carries almost all the luminance in the range, so
- * mixing away from black spends contrast slowly, while mixing away from #EEE towards #111 spends it fast. One share
- * would be pinned by the dark scheme and leave the light one far darker than it needs to be. Each role held to a
- * budget sets its own offset: eight points for secondary text, ten for the placeholder and seven for the field line.
- * The disabled colour is held to no budget, and follows secondary text at the same eight points in the dark scheme.
+ * A role mixing the text anchor towards the page takes more of it in the dark scheme than in the light one, because
+ * the two ends behave nothing alike: white carries almost all the luminance in the range, so mixing away from black
+ * spends contrast slowly, while mixing away from #EEE towards #111 spends it fast. One share would be pinned by the
+ * dark scheme and leave the light one far darker than it needs to be, so each role held to a budget sets the offset
+ * its own budget calls for. The disabled colour is held to no budget, and takes the offset of secondary text.
  */
 
 :root {
@@ -348,8 +347,8 @@
     );
 
     /*
-     * The enabled colour, marking a control that answers, takes the hue of the subtle accent at three times its chroma
-     * and a step towards the page, so it stands out from the text around it while following a retuned brand. The step
+     * The enabled colour, marking a control that answers, takes the hue of the subtle accent at a richer chroma and
+     * lifted towards the page, so it stands out from the text around it while following a retuned brand. The lift
      * is what keeps it off the links, which take the same hue at a lightness of their own: it sits ΔE 6.1 and 10.4
      * from a link at rest in the light and the dark scheme, 13 and 18 from one under the pointer. It holds AA contrast
      * at 5.99:1 on the page, 5.58:1 on the stripe and 5.66:1 on the edit background in the light scheme, and 5.89:1,
@@ -368,11 +367,11 @@
     );
 
     /*
-     * A link takes the hue of the subtle accent at twice its chroma and at a lightness of its own: an app retuning the
-     * accent moves the hue alone, never the contrast. The pointer moves the link 0.08 away from the page in
-     * lightness, deeper in the light scheme and lighter in the dark one, and up to three times the subtle chroma, so
-     * the step reads as a colour change rather than as a fade towards the page text. The caps keep the chroma inside
-     * the gamut at that lightness, so every browser paints one colour. Figures for the shipped accent:
+     * A link takes the hue of the subtle accent at a richer chroma and at a lightness of its own: an app retuning the
+     * accent moves the hue alone, never the contrast. The pointer moves the link away from the page in lightness,
+     * deeper in the light scheme and lighter in the dark one, and richer still in chroma, so the step reads as a
+     * colour change rather than as a fade towards the page text. The caps keep the chroma inside the gamut at that
+     * lightness, so every browser paints one colour. Figures for the shipped accent:
      *
      *                    page   stripe  text
      *     light  rest    7.40   6.89    2.84
@@ -392,8 +391,8 @@
     );
 
     /*
-     * A control under the pointer or the press is the strong accent carried towards the page text, by a fifth and by
-     * two fifths: away from the page in either scheme, since the text anchor swaps sides with it, and inside the
+     * A control under the pointer or the press is the strong accent carried towards the page text, the press further
+     * than the pointer: away from the page in either scheme, since the text anchor swaps sides with it, and inside the
      * gamut, since a mix of two colours the page can paint stays paintable. Stepping the lightness instead left the
      * gamut, and each browser then painted its own colour: Chrome and Firefox clip the channels, which in the dark
      * scheme turned the pressed orange into the caution amber at ΔE 1.9, while Safari reduces the chroma.
@@ -435,10 +434,11 @@
      * in the dark one, figures an app supplying an accent of its own rechecks for that accent.
      *
      * The dark shares are heavier, since a share that tints a white page reads as a grey on a dark one, and boost
-     * the chroma the mix leaves, as the status tints do, so the fill reads as the accent rather than as a brown. The label caps them: the pressed fill rises a hair past the overlay's lightness, to where the label
-     * holds 4.58:1 and the focus ring 3.27:1 on it, and no further. The boost stops at twice the chroma, where the
-     * pressed fill is still inside the gamut, and scales a and b rather than the OKLCh chroma for the reason the
-     * tints do: Chrome drops the hue of a colour this grey and paints a relative oklch() reading it as a red.
+     * the chroma the mix leaves, as the status tints do, so the fill reads as the accent rather than as a brown. The
+     * label caps them: the pressed fill rises a hair past the overlay's lightness, to where the label holds 4.58:1 and
+     * the focus ring 3.27:1 on it, and no further. The boost stops while the pressed fill is still inside the gamut,
+     * and scales a and b rather than the OKLCh chroma for the reason the tints do: Chrome drops the hue of a colour
+     * this grey and paints a relative oklch() reading it as a red, which no evaluator outside a browser predicts.
      */
 
     --skin--background-color-hover: light-dark(
@@ -458,8 +458,8 @@
      * A control answering to no accent is told apart by lightness alone, so its states are laid over the surface it
      * stands on rather than mixed into the page. A tint mixed into the page reads on the page and nowhere else: the
      * sunken surface already sits a step from the page in the direction the tint travels, so the two all but meet
-     * there. Each state is page ink at a share of cover instead, deepening any surface by the same step, the press
-     * twice as far as the hover, whatever the surface the control happens to stand on.
+     * there. Each state is page ink at a share of cover instead, deepening any surface by the same step whatever the
+     * surface the control happens to stand on, and the press deepening it further than the hover.
      *
      * The shares are the heaviest at which the label, an enabled control and the focus ring hold their budgets over
      * the pressed state on the page, the stripe, the edit field and the sunken surface: the tightest is the sunken
@@ -483,12 +483,12 @@
      * tightest, and in the dark one all five do, at 4.79:1. The page text holds 17.8:1 and 14.3:1 on every tint.
      *
      * A light tint is the mix as it comes: a hair under white, it has no room for more chroma. A dark tint is the
-     * same mix at two and a half times the chroma, which the gamut holds at that lightness for every step: the plain
-     * mix left a quarter of the anchor's chroma on the dark page, where any dim gold reads as brown and any dim red
-     * as a grey, and the notices read as so many greys. The label and the focus ring hold on every tint in both
-     * schemes, at 4.96:1 and 3.54:1 on the tightest, the dark pass, and at 5.50:1 and 3.35:1 on the light tints. The
-     * boost scales a and b rather than the OKLCh chroma, since Chrome drops the hue of a colour this grey, which a
-     * relative oklch() reading it would then paint as a red, and no evaluator outside a browser predicts it.
+     * same mix with its chroma boosted, which the gamut holds at that lightness for every step: the plain mix left a
+     * quarter of the anchor's chroma on the dark page, where any dim gold reads as brown and any dim red as a grey,
+     * and the notices read as so many greys. The label and the focus ring hold on every tint in both schemes, at
+     * 4.96:1 and 3.54:1 on the tightest, the dark pass, and at 5.50:1 and 3.35:1 on the light tints. The boost scales
+     * a and b rather than the OKLCh chroma, since Chrome drops the hue of a colour this grey, which a relative oklch()
+     * reading it would then paint as a red, and no evaluator outside a browser predicts it.
      */
 
     --skin--background-color-note: light-dark(

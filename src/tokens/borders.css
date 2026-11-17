@@ -115,7 +115,7 @@
 /*
  * The values standing on other tokens, which an initial value cannot carry: the enclosing line takes the disabled
  * colour, and the two marks are assembled from the width, the style and the colour role each one signals. The focus
- * mark is drawn at twice the width, so it reads as a mark rather than as a second border.
+ * mark is drawn heavier than the line, so it reads as a mark rather than as a second border.
  */
 
 :root {
@@ -144,7 +144,7 @@
     --skin--outline-focus: var(--skin--border-style) calc(2 * var(--skin--border-width)) var(--skin--color-focus);
     --skin--outline-invalid: var(--skin--border-style) var(--skin--border-width) var(--skin--color-fail);
 
-    /* A glyph set beside strong text is stroked half again as thick, to match the heavier letters beside it. */
+    /* A glyph set beside strong text is stroked thicker, to match the heavier letters beside it. */
 
     --skin--stroke-width-strong: calc(1.5 * var(--skin--stroke-width));
 

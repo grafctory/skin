@@ -19,9 +19,9 @@
  * a width token: these carry the answer instead of the question, and a rule branches on a breakpoint by name through
  * a style query rather than repeating its width.
  *
- * The widths below are the only place the design system states them at all: 30rem for a phone held upright, 48rem for
- * a tablet or a split window, 64rem for a laptop and 90rem for a desktop. A rule elsewhere reads the switch for the
- * breakpoint it cares about, never the width behind it, so the threshold can move without touching that rule.
+ * The widths below are the only place the design system states them at all, one each for a phone held upright, a
+ * tablet or a split window, a laptop and a desktop. A rule elsewhere reads the switch for the breakpoint it cares
+ * about, never the width behind it, so the threshold can move without touching that rule.
  */
 
 @property --skin--viewport-small {
