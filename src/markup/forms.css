@@ -445,6 +445,35 @@ select {
     color: var(--skin--color-placeholder);
 }
 
+/*
+ * A menu has no placeholder attribute: its stand-in is a first option that is disabled and holds no value. While that
+ * option is shown, an enabled menu sets it in the placeholder colour a field gives its hint. Browsers take the same
+ * option as the placeholder of a required menu, so the faded hint marks exactly the menus a form holds as unanswered.
+ * An enabled option with no value, such as "Any" in a filter, is a real choice and keeps the text colour. A disabled
+ * menu keeps the disabled colour whatever option it shows, since it takes no answer from the reader at all.
+ */
+
+select:enabled:has(> option[value=""]:first-child:disabled:checked) {
+
+    color: var(--skin--color-placeholder);
+
+    /*
+     * Only the hint fades. Every other entry in the open list keeps the text colour, group labels and disabled options
+     * included, so nothing but the hint changes colour as a choice is made or cleared.
+     */
+
+    & :is(optgroup, option:not(:checked)) {
+        color: var(--skin--color);
+    }
+
+    /* The arrow keeps the text colour too, in a rule of its own: a browser lacking the part drops a list naming it. */
+
+    &::picker-icon {
+        color: var(--skin--color);
+    }
+
+}
+
 /* A group of fields stretches no wider than the column it stands in, however wide the controls it gathers. */
 
 fieldset {

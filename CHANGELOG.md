@@ -38,6 +38,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the button clearing a search field is drawn as a cross in the colour of the value, in place of the platform glyph;
   a date or time field shows the button opening its picker only while hovered or focused, so filled fields at rest
   read as values rather than as controls, and a disabled or read-only field, which takes no input, never shows it
+- Menu hints - an enabled menu showing an empty, disabled first option, the placeholder of a required menu, sets it
+  in the placeholder colour a field gives its hint, so an unanswered menu reads as an empty field rather than as a
+  choice already made; the options in the open list keep the text colour, so only the hint fades
 - Text markup - `h4` to `h6` are styled as headings, `b` is bold and `i`, `cite`, `dfn` and `var` italic, `kbd` is
   drawn as a key cap and `samp` set in the mono face, `mark` lies on the selected tint, `sub` and `sup` are set
   smaller without opening the line, and an `abbr` carrying a title offers it as help
