@@ -39,14 +39,15 @@
 
 /*
  * The base size follows the reader's own setting and the window rather than what it sits in, holding its rhythm
- * wherever embedded. It grows by a quarter from a laptop window to a desktop one, where text read from further away
- * would otherwise look small, and is capped there; the two variants stay relative to what they sit in.
+ * wherever embedded. It grows by an eighth across laptop windows and by a quarter only past the widest of them, on
+ * desktop windows where text read from further away would otherwise look small, and is capped there; the two size
+ * variants stay relative to whatever they sit in, so a subtree sized apart keeps their ratio to its own text.
  */
 
 @property --skin--font-size {
     syntax: "*";
     inherits: true;
-    initial-value: clamp(1rem, 0.5rem + 0.625vw, 1.25rem);
+    initial-value: max(clamp(1rem, 0.75rem + 0.3125vw, 1.125rem), clamp(1rem, 100vw / 48 - 1.25rem, 1.25rem));
 }
 
 @property --skin--font-size-small {

@@ -207,7 +207,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   caution fill takes the page background, white over the light gold and dark over the dark one
 - `fontSize` - the page takes the base size on `body`, leaving the root at the size the reader set, so the token
   resolves to one length at every depth and a `rem` means the reader's setting in a rule as it does in a media query;
-  a measure stated in `rem` to follow the base text size is restated in `em` or as a token; on a desktop-sized
+  a measure stated in `rem` to follow the base text size is restated in `em` or as a token; past the widest laptop
   window it grows by a quarter rather than an eighth, to `1.25rem`, as text read from further away looked small
 - Form fields - an invalid value is marked once the reader has edited it, through `:user-invalid`, so a required
   field left empty on arrival no longer shows as failed, and the focus ring of a field follows `:focus-visible`; a
