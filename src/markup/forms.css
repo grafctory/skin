@@ -206,10 +206,16 @@ input, textarea {
     border-style: var(--skin--border-style);
     border-radius: var(--skin--border-radius-025);
 
-    /* A field taking typed text keeps its value clear of the border. A box, a slider, a swatch and a picker do not. */
+    /* A field taking a typed line keeps it clear of the border. A box, a slider, a swatch and a picker do not. */
 
-    &:not([type=checkbox], [type=radio], [type=range], [type=color], [type=file]) {
+    &:not(textarea, [type=checkbox], [type=radio], [type=range], [type=color], [type=file]) {
         padding: var(--skin--spacing-025) var(--skin--spacing-050);
+    }
+
+    /* A text area keeps its paragraphs further from the border, so they read as a block of text set inside a box. */
+
+    &:is(textarea) {
+        padding: var(--skin--spacing-050);
     }
 
     /*
@@ -474,14 +480,71 @@ select:enabled:has(> option[value=""]:first-child:disabled:checked) {
 
 }
 
-/* A group of fields stretches no wider than the column it stands in, however wide the controls it gathers. */
+/*
+ * A label names its control in the text colour and the strong weight, so the name and its field read as one piece of
+ * the form, told apart by weight rather than by a second colour. A label is set a step smaller, reading as a caption
+ * on the field below rather than as a heading competing with the text around the form. A label wrapping its field
+ * stacks the text over the field, both aligned to the start, kept apart by a gap of their own in place of the single
+ * space between words, which would read as one run of text rather than as a name above its control.
+ */
+
+label {
+
+    color: var(--skin--color);
+    font-size: var(--skin--font-size-small);
+    font-weight: var(--skin--font-weight-strong);
+
+    &:has(:is(input, select, textarea, meter, progress, output)) {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--skin--spacing-025) var(--skin--spacing-050);
+    }
+
+    /*
+     * A label wrapping a box ticked or picked sets the text beside the box at the size of the text around it, lined up
+     * with the middle of the box rather than with its foot, where the box would otherwise ride above its text.
+     */
+
+    &:has(:is([type=checkbox], [type=radio])) {
+        flex-direction: row;
+        align-items: center;
+        font-size: inherit;
+    }
+
+    /* A control keeps the size and the weight of a value, whatever the label wrapping it is set in. */
+
+    & :is(input, select, textarea, button, meter, progress, output) {
+        font-size: var(--skin--font-size);
+        font-weight: var(--skin--font-weight);
+    }
+
+}
+
+/*
+ * A group of fields is framed by a rounded box in the decorative line, its caption set into the top edge where the
+ * platform breaks the border around it, so the fields read as one set and the caption as the name of that set. The
+ * frame keeps the fields clear of its line by the room a panel keeps from its content, and stretches no wider than
+ * the column it stands in, however wide the controls it gathers may be, so a long field never pushes it past the page.
+ */
 
 fieldset {
     min-inline-size: 0;
+    padding: var(--skin--spacing-075) var(--skin--spacing-100) var(--skin--spacing-100);
+    border-style: var(--skin--border-style);
+    border-radius: var(--skin--border-radius-050);
 }
 
-/* The caption of a group is set in the strong weight, so it reads as the heading of the fields it gathers. */
+/*
+ * The caption of a group is set as a label is, smaller than the text around it and in the strong weight, so a group
+ * and its fields are named alike, the caption standing apart by its place on the frame alone. It keeps a narrow gap
+ * on either side where it breaks the border, and is pulled back by that gap, so its text starts on the line the
+ * fields inside start on and the group reads down one edge from its name to the last of its fields.
+ */
 
 legend {
+    margin-inline-start: calc(-1 * var(--skin--spacing-025));
+    padding-inline: var(--skin--spacing-025);
+    font-size: var(--skin--font-size-small);
     font-weight: var(--skin--font-weight-strong);
 }

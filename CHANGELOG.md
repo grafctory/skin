@@ -31,8 +31,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   on the page, enough for large text and marks, and no other step or pairing carries a contrast guarantee
 - Form markup - disabled fields recede in the disabled colour, read-only fields keep their value in the text colour
   behind the decorative line in place of the field edge, checkboxes and radios take the size of the text, the
-  enabled colour marks a ticked box, a slider and a progress bar, a file field's button is boxed as a button is, a
-  fieldset stays inside its column and a legend is set in the strong weight, as the heading of its group; a meter
+  enabled colour marks a ticked box, a slider and a progress bar, a file field's button is boxed as a button is; a
+  label names its field in the text colour, small and strong, stacked over the field it wraps, or beside a box ticked
+  or picked at the size of the text; a fieldset is framed by a rounded box in the decorative line and stays inside its
+  column, its legend set as a label is and starting on the edge its fields start on; a text area keeps its text
+  further from the border than a single-line field does; a meter
   is drawn flat in the enabled colour, taking the caution and failure steps for a value off or far from the optimum,
   its bar held clear of the outline by even room; a colour well holds its swatch by even room on every side as well;
   the button clearing a search field is drawn as a cross in the colour of the value, in place of the platform glyph;

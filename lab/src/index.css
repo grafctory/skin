@@ -132,6 +132,7 @@ body {
     & > label {
 
         position: relative;
+        font-weight: var(--skin--font-weight); /* An option of the switch, not the name of a box. */
         cursor: pointer;
 
         & > input {
@@ -1189,21 +1190,10 @@ main > section {
             margin-bottom: var(--skin--spacing-075);
         }
 
-        & > label:not(.inline) {
-            display: grid;
-            gap: var(--skin--spacing-025);
-            font-size: var(--skin--font-size-small);
-            color: var(--skin--color-label);
+        /* A sample field spans the column, so the fields of a group line up as one edge down the frame. */
 
-            & > :is(input, select, textarea, output) {
-                font-size: var(--skin--font-size);
-            }
-        }
-
-        & > label.inline {
-            display: flex;
-            align-items: center;
-            gap: var(--skin--spacing-050);
+        & > label > :is(input:not([type=checkbox], [type=radio]), select, textarea, output) {
+            align-self: stretch;
         }
 
         & > .actions {
