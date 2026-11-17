@@ -42,7 +42,7 @@ button, select {
 
 }
 
-/* A value, typed, picked or worked out, reads in the text colour, whatever colour the label around it takes. */
+/* A value, typed, picked or worked out, reads in the text colour, whatever colour the text around it takes. */
 
 input, textarea, select, output {
     color: var(--skin--color);

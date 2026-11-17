@@ -361,7 +361,7 @@ describe.each(schemes)("colours in the %s scheme", scheme => {
 
 	});
 
-	it("holds the text and the label to AA on every fill and tint", async () => {
+	it("holds the text and the secondary text to AA on every fill and tint", async () => {
 
 		expect(pairs([ colors.color, colors.colorLabel ], [ ...fills, ...tints ], TEXT)).toEqual([]);
 
@@ -385,7 +385,7 @@ describe.each(schemes)("colours in the %s scheme", scheme => {
 
 	});
 
-	it("holds the text, the label and the enabled controls to AA on the neutral states over the surfaces they reach", async () => {
+	it("holds the text, the secondary text and the enabled controls to AA on the neutral states over the surfaces they reach", async () => {
 
 		expect(laid([ colors.color, colors.colorLabel, colors.colorEnabled ], TEXT)).toEqual([]);
 

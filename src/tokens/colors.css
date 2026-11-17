@@ -274,14 +274,14 @@
  * light one, because the two ends behave nothing alike: white carries almost all the luminance in the range, so
  * mixing away from black spends contrast slowly, while mixing away from #EEE towards #111 spends it fast. One share
  * would be pinned by the dark scheme and leave the light one far darker than it needs to be. Each role held to a
- * budget sets its own offset: eight points for the label, ten for the placeholder and seven for the field line. The
- * disabled colour is held to no budget, and follows the label at the same eight points in the dark scheme.
+ * budget sets its own offset: eight points for secondary text, ten for the placeholder and seven for the field line.
+ * The disabled colour is held to no budget, and follows secondary text at the same eight points in the dark scheme.
  */
 
 :root {
 
     /*
-     * Each label share is pinned by the tightest surface a label is set on, the pressed tint in either scheme, at
+     * Each share is pinned by the tightest surface secondary text is set on, the pressed tint in either scheme, at
      * 5.53:1 in the light one and 4.58:1 in the dark one, where the overlay surface holds 4.66:1.
      */
 
