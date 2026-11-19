@@ -60,7 +60,7 @@
     "setup": "npm ci && ush ln",
     "build": "ush rm dist docs && tsc -p tsconfig.build.json && ush cp dist 'src/**/*.css' && npx typedoc && npx vite build lab",
     "check": "npx vitest --typecheck run",
-    "proof": "npx typedoc --watch & ush ws --open docs",
+    "proof": "ush up npx typedoc --watch + ush ws --open docs",
     "watch": "npx vite lab --open"
   },
   "dependencies": {
