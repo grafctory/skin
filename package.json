@@ -76,7 +76,7 @@
     "@csstools/css-color-parser": "^4.2.7",
     "@csstools/css-parser-algorithms": "^4.0.2",
     "@csstools/css-tokenizer": "^4.0.2",
-    "@metreeca/rack": "^0.7.0",
+    "@metreeca/rack": "^0.8.0",
     "@types/node": "^22.20.4",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
