@@ -28,17 +28,6 @@ import platform from "../../src/index.css?inline";
 import { type Token, skin } from "../../src/index.js";
 import inter from "../../src/presets/inter.css?inline";
 import roboto from "../../src/presets/roboto.css?inline";
-import { borders } from "../../src/tokens/borders.js";
-import { colors } from "../../src/tokens/colors.js";
-import { elevations } from "../../src/tokens/elevations.js";
-import { layers } from "../../src/tokens/layers.js";
-import { motions } from "../../src/tokens/motions.js";
-import { opacities } from "../../src/tokens/opacities.js";
-import { palettes } from "../../src/tokens/palettes.js";
-import { scalings } from "../../src/tokens/scalings.js";
-import { spacings } from "../../src/tokens/spacings.js";
-import { typography } from "../../src/tokens/typography.js";
-import { viewports } from "../../src/tokens/viewports.js";
 import "./index.css";
 
 
@@ -59,10 +48,6 @@ type Step = Readonly<{
 	status: string
 }>
 
-
-const families = [
-	typography, spacings, scalings, colors, borders, elevations, palettes, layers, motions, opacities, viewports
-];
 
 const tokens: readonly Token[] = Object.keys(skin).filter(isToken);
 
@@ -171,7 +156,6 @@ const context = document.createElement("canvas").getContext("2d", { willReadFreq
 render(".facts", [
 	[1, "cascade layer"],
 	[2, "colour schemes"],
-	[families.length, "token families"],
 	[tokens.length, "tokens"]
 ].map(([value, label]) => `<li><strong>${value}</strong><span>${label}</span></li>`).join(""));
 
