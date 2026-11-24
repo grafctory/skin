@@ -1,5 +1,5 @@
 {
-  "name": "@metreeca/skin",
+  "name": "@grafctory/skin",
   "version": "0.3.1",
   "description": "Essential design tokens and styles.",
   "keywords": [
@@ -9,9 +9,9 @@
     "tokens",
     "ui"
   ],
-  "homepage": "https://metreeca.github.io/skin/",
+  "homepage": "https://grafctory.github.io/skin/",
   "bugs": {
-    "url": "https://github.com/metreeca/skin/issues",
+    "url": "https://github.com/grafctory/skin/issues",
     "email": "info@metreeca.com"
   },
   "license": "Apache-2.0",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/metreeca/skin.git"
+    "url": "git+https://github.com/grafctory/skin.git"
   },
   "type": "module",
   "sideEffects": [
@@ -30,19 +30,19 @@
   ],
   "exports": {
     ".": {
-      "@metreeca/source": "./src/index.ts",
+      "@grafctory/source": "./src/index.ts",
       "default": "./dist/index.js"
     },
     "./index.css": {
-      "@metreeca/source": "./src/index.css",
+      "@grafctory/source": "./src/index.css",
       "default": "./dist/index.css"
     },
     "./presets/inter.css": {
-      "@metreeca/source": "./src/presets/inter.css",
+      "@grafctory/source": "./src/presets/inter.css",
       "default": "./dist/presets/inter.css"
     },
     "./presets/roboto.css": {
-      "@metreeca/source": "./src/presets/roboto.css",
+      "@grafctory/source": "./src/presets/roboto.css",
       "default": "./dist/presets/roboto.css"
     }
   },
@@ -76,7 +76,7 @@
     "@csstools/css-color-parser": "^4.2.7",
     "@csstools/css-parser-algorithms": "^4.0.2",
     "@csstools/css-tokenizer": "^4.0.2",
-    "@metreeca/rack": "^0.8.0",
+    "@grafctory/rack": "^0.8.0",
     "@types/node": "^22.20.4",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",

@@ -254,7 +254,7 @@ describe("presets", () => {
 		it("is exported by the package", () => {
 
 			expect(manifest.exports[`./presets/${ name }`]).toEqual({
-				"@metreeca/source": `./src/presets/${ name }`,
+				"@grafctory/source": `./src/presets/${ name }`,
 				"default": `./dist/presets/${ name }`
 			});
 

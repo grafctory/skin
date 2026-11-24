@@ -36,13 +36,13 @@
  * Include the stylesheet once, at the entry point of the app:
  *
  * ```typescript
- * import "@metreeca/skin/index.css";
+ * import "@grafctory/skin/index.css";
  * ```
  *
  * Include a preset in its place to set the interface in the faces the preset bundles:
  *
  * ```typescript
- * import "@metreeca/skin/presets/roboto.css";
+ * import "@grafctory/skin/presets/roboto.css";
  * ```
  *
  * Override any token to restyle the whole interface, stating a colour for both schemes as a `light-dark()` pair:

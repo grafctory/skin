@@ -1,7 +1,7 @@
 ---
 name: "Feature Request"
 about: "Suggest an idea for this project"
-title: "What's missing from @metreeca/skin?"
+title: "What's missing from @grafctory/skin?"
 type: "Feature"
 ---
 

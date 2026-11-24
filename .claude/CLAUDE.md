@@ -1,6 +1,6 @@
 ---
 title: Project Guidelines
-description: Development guidelines and conventions for the @metreeca/skin package.
+description: Development guidelines and conventions for the @grafctory/skin package.
 ---
 
 # References
@@ -54,13 +54,13 @@ no behaviour, and nothing in it imports a rendering framework.
 
 - **`npm run clean`** - Remove dependencies and build artefacts
 - **`npm run prime`** - Install dependencies from the lockfile
-- **`npm run setup`** - Install dependencies and link sibling `@metreeca/*` repositories
+- **`npm run setup`** - Install dependencies and link sibling `@grafctory/*` repositories
 - **`npm run build`** - Compile sources and generate docs
 - **`npm run check`** - Run the test suite
 - **`npm run proof`** - Serve live docs
 
 > [!CAUTION]
-> **`prime` and `setup` are not interchangeable.** Run `prime` when finalising a public release: `@metreeca/*` imports
+> **`prime` and `setup` are not interchangeable.** Run `prime` when finalising a public release: `@grafctory/*` imports
 > resolve to the published releases recorded in the lockfile. Run `setup` for local development against unpublished
 > sibling branches: imports resolve to the working copies in the neighbouring repositories.
 
@@ -187,7 +187,7 @@ the way an app would, so it states values rather than defining tokens, and stays
   `descent-override` and `line-gap-override` stated, and one face per design system weight, regular for `100 500` and
   bold for `600 900`, since a synthesised bold runs wider than the face it stands in for; see
   [Fallback Faces](#fallback-faces)
-- `package.json` exports it as `./presets/<name>.css`, with the `@metreeca/source` condition, one entry per preset and
+- `package.json` exports it as `./presets/<name>.css`, with the `@grafctory/source` condition, one entry per preset and
   never a wildcard
 
 Vite carries into a bundle only the faces reached from the stylesheet an app imports, so the presets it does not import

@@ -619,9 +619,9 @@ function preset(): void {
 	const presets: Readonly<Record<string, string>> = { platform, inter, roboto };
 
 	const entries: Readonly<Record<string, string>> = {
-		platform: "@metreeca/skin/index.css",
-		inter: "@metreeca/skin/presets/inter.css",
-		roboto: "@metreeca/skin/presets/roboto.css"
+		platform: "@grafctory/skin/index.css",
+		inter: "@grafctory/skin/presets/inter.css",
+		roboto: "@grafctory/skin/presets/roboto.css"
 	};
 
 	const style = document.head.appendChild(document.createElement("style"));

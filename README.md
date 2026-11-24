@@ -1,10 +1,10 @@
-# @metreeca/skin
+# @grafctory/skin
 
-[![npm](https://img.shields.io/npm/v/@metreeca/skin)](https://www.npmjs.com/package/@metreeca/skin)
+[![npm](https://img.shields.io/npm/v/@grafctory/skin)](https://www.npmjs.com/package/@grafctory/skin)
 
 Essential design tokens and styles.
 
-**@metreeca/skin** is a foundational design system with clean, minimalist tokens for typography, spacing, colour,
+**@grafctory/skin** is a foundational design system with clean, minimalist tokens for typography, spacing, colour,
 elevation and motion, and a base stylesheet that gives plain document markup a coherent look in light and dark schemes:
 
 - **Accessible Colours**: every colour role held to the WCAG 2.2 contrast minimums in both schemes by the test suite
@@ -18,7 +18,7 @@ app restating the tokens for a brand's faces, colours and shapes restyles every 
 # Installation
 
 ```shell
-npm install @metreeca/skin
+npm install @grafctory/skin
 ```
 
 > [!WARNING]
@@ -31,12 +31,12 @@ npm install @metreeca/skin
 > [!NOTE]
 >
 > This section introduces essential concepts; for complete coverage, see the
-> [API reference](https://metreeca.github.io/skin/).
+> [API reference](https://grafctory.github.io/skin/).
 
 Include the stylesheet once, at the entry point of the app, ahead of the app styles overriding it:
 
 ```typescript
-import "@metreeca/skin/index.css";
+import "@grafctory/skin/index.css";
 ```
 
 An app assembling its own HTML links it in the document head instead: the stylesheet has to reach the document before
@@ -47,7 +47,7 @@ it is painted, or the first frame shows the unstyled markup.
 A preset is the whole design system restyled for a brand, included **in place of** `index.css`, never beside it:
 
 ```typescript
-import "@metreeca/skin/presets/roboto.css";
+import "@grafctory/skin/presets/roboto.css";
 ```
 
 | Stylesheet           | Faces                                                                              |
@@ -119,8 +119,8 @@ The other accent colours need no target of their own. Hover and pressed text mov
 page, so it gains contrast. Links and enabled controls take only the hue of the subtle accent and set their own
 lightness. Text over a strong fill picks black or white, whichever reads better.
 
-To try a candidate pair, open the [theming tuner](https://metreeca.github.io/skin/lab/#theming) of the specimen. It
-applies both accents to the whole page, and the [colour roles table](https://metreeca.github.io/skin/lab/#colours)
+To try a candidate pair, open the [theming tuner](https://grafctory.github.io/skin/lab/#theming) of the specimen. It
+applies both accents to the whole page, and the [colour roles table](https://grafctory.github.io/skin/lab/#colours)
 marks every role that falls short of its budget, the strong accent included on the pressed fill it is tightest on.
 Against white, the defaults hold 5.51:1 for the strong orange and 10.0:1 for the subtle slate, so the orange clears its
 target by a hair and the slate by far, so a brand's strong accent is the one that needs checking in the tuner.
@@ -139,7 +139,7 @@ An app setting a face of its own imports `index.css`, so its build carries no fa
 in the same stylesheet restating the tokens that name it, so the two never drift apart:
 
 ```css
-@import "@metreeca/skin/index.css";
+@import "@grafctory/skin/index.css";
 @import "@fontsource-variable/source-sans-3";
 
 :root {
@@ -174,7 +174,7 @@ balanced, while text being typed keeps the platform wrapping. No token carries t
 ### Other Tokens
 
 Spacings, radii, elevations, palettes, motions and the other families are overridden the same way. Every token is listed
-by family in the [API reference](https://metreeca.github.io/skin/), along with what it decides, so an app finds the
+by family in the [API reference](https://grafctory.github.io/skin/), along with what it decides, so an app finds the
 token to retune without reading through the stylesheets and the modules that state its value.
 
 The viewport breakpoints are the one exception: CSS does not accept a custom property in a media query, so an app cannot
@@ -344,7 +344,7 @@ Restyle a single subtree instead by assigning the tokens inline, naming them thr
 as literal strings, so a renamed token breaks the build instead of silently losing its styling:
 
 ```tsx
-import { css } from "@metreeca/skin";
+import { css } from "@grafctory/skin";
 
 <section style={css({ colorStrong: "#06C" })}>
 ```
@@ -354,7 +354,7 @@ attribute. The reference resolves wherever it is read, so it carries whatever th
 scheme is in force:
 
 ```tsx
-import { css, skin } from "@metreeca/skin";
+import { css, skin } from "@grafctory/skin";
 
 <span style={{ backgroundColor: css.var(skin.colorStrong) }}/>
 ```
@@ -367,7 +367,7 @@ the lanes of a swimlane by type. The colour is washed into the sunken surface by
 text the area holds stays readable on the page colour, in either colour scheme, with no `color` of its own:
 
 ```tsx
-import { css, skin } from "@metreeca/skin";
+import { css, skin } from "@grafctory/skin";
 
 <div style={css({ backgroundColor: css.tint(skin.colorHeat030, 20) })}>
 ```
@@ -377,7 +377,7 @@ to for the element it applies to, rather than a copy of the default, and keep wh
 colour scheme in force:
 
 ```typescript
-import { skin } from "@metreeca/skin";
+import { skin } from "@grafctory/skin";
 
 getComputedStyle(element).getPropertyValue(skin.colorStrong);
 ```
@@ -461,10 +461,10 @@ still finds and reads it, where the native `hidden` attribute would remove it fo
 
 # Support
 
-- open an [issue](https://github.com/metreeca/skin/issues) to report a problem or to suggest a new feature
-- start a [discussion](https://github.com/metreeca/skin/discussions) to ask a how-to question or to share an idea
+- open an [issue](https://github.com/grafctory/skin/issues) to report a problem or to suggest a new feature
+- start a [discussion](https://github.com/grafctory/skin/discussions) to ask a how-to question or to share an idea
 
 # License
 
 This project is licensed under the Apache 2.0 License –
-see [LICENSE](https://github.com/metreeca/skin?tab=Apache-2.0-1-ov-file) file for details.
+see [LICENSE](https://github.com/grafctory/skin?tab=Apache-2.0-1-ov-file) file for details.
