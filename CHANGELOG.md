@@ -10,13 +10,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased](https://github.com/grafctory/skin/compare/v0.3.1...HEAD)
 
-## [0.3.1](https://github.com/metreeca/skin/compare/v0.3.0...v0.3.1) - 2026-11-24
+## [0.3.1](https://github.com/grafctory/skin/compare/v0.3.0...v0.3.1) - 2026-11-24
 
 ### Changed
 
 - Maintenance release with no change to the published API or behaviour
 
-## [0.3.0](https://github.com/metreeca/skin/compare/v0.2.0...v0.3.0) - 2026-11-17
+## [0.3.0](https://github.com/grafctory/skin/compare/v0.2.0...v0.3.0) - 2026-11-17
 
 ### Added
 
@@ -118,7 +118,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   could not quieten the buttons of a toolbar without its fields. A binding package now sets a default look per kind
   of widget, and a widget stating `look` itself is unaffected, so only area-wide settings need replacing
 
-## [0.2.0](https://github.com/metreeca/skin/compare/v0.1.0...v0.2.0) - 2026-11-05
+## [0.2.0](https://github.com/grafctory/skin/compare/v0.1.0...v0.2.0) - 2026-11-05
 
 ### Added
 
@@ -133,7 +133,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Specimen page, built with the docs, showing every token live in both colour schemes with contrast readouts and a
   brand tuner previewing, in both schemes at once, the `:root` override an app would state for its own accents
 
-## [0.1.0](https://github.com/metreeca/skin/releases/tag/v0.1.0) - 2026-11-05
+## [0.1.0](https://github.com/grafctory/skin/releases/tag/v0.1.0) - 2026-11-05
 
 Initial release, claiming the package name ahead of the design system moving over from `@metreeca/tile`.
 

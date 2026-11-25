@@ -44,7 +44,7 @@ description: Development guidelines and conventions for the @grafctory/skin pack
 
 # Overview
 
-Metreeca Skin is the design system of the Metreeca stack: a typed token contract and the stylesheet that gives it
+Grafctory Skin is the design system of the Grafctory stack: a typed token contract and the stylesheet that gives it
 values, so that interfaces built on it share one look and adopt a brand book by redefining tokens alone.
 
 The package is a token layer and the base rules applying it to plain document markup. It carries no components and
