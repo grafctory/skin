@@ -1,11 +1,16 @@
 # @grafctory/skin
 
-[![npm](https://img.shields.io/npm/v/@grafctory/skin)](https://www.npmjs.com/package/@grafctory/skin)
+[![npm][npm-badge]][npm]
+
+[npm-badge]: https://img.shields.io/npm/v/@grafctory/skin
+[npm]: https://www.npmjs.com/package/@grafctory/skin
+[grafctory]: https://github.com/grafctory
 
 Essential design tokens and styles.
 
-**@grafctory/skin** is a foundational design system with clean, minimalist tokens for typography, spacing, colour,
-elevation and motion, and a base stylesheet that gives plain document markup a coherent look in light and dark schemes:
+**@grafctory/skin** is the design system module of the [Grafctory][grafctory] model-driven knowledge graph framework. It
+offers clean, minimalist tokens for typography, spacing, colour, elevation and motion, and a base stylesheet that gives
+plain document markup a coherent look in light and dark schemes:
 
 - **Accessible Colours**: every colour role held to the WCAG 2.2 contrast minimums in both schemes by the test suite
 - **Framework-Free**: plain CSS for plain document markup, with no components and no rendering framework
@@ -468,3 +473,5 @@ still finds and reads it, where the native `hidden` attribute would remove it fo
 
 This project is licensed under the Apache 2.0 License –
 see [LICENSE](https://github.com/grafctory/skin?tab=Apache-2.0-1-ov-file) file for details.
+
+<sub>Grafctory™ is a trademark of Metreeca srl.</sub>
