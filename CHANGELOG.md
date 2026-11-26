@@ -8,7 +8,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 > [!NOTE]
 > Published as `@grafctory/skin` from version 0.3.1; earlier versions were published as `@metreeca/skin`.
 
-## [Unreleased](https://github.com/grafctory/skin/compare/v0.3.1...HEAD)
+## [Unreleased](https://github.com/grafctory/skin/compare/v0.3.2...HEAD)
+
+## [0.3.2](https://github.com/grafctory/skin/compare/v0.3.1...v0.3.2) - 2026-11-26
+
+### Changed
+
+- Bug reports now go to `info@grafctory.dev`, and the README presents the package as the design system of Grafctory
 
 ### Fixed
 
