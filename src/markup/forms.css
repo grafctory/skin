@@ -22,24 +22,30 @@
  * draws and no radius reaches, takes the platform ring instead, which follows those corners in the focus colour.
  *
  * The offset is stated wherever a mark is, the outline shorthand not carrying it. A control standing free is marked
- * outside its edge, and a control already enclosed by a border is marked just inside it, so the two lines are read
- * as one edge rather than as a doubled one. A component filling a control solid moves the mark clear outside its
- * edge, since the focus colour holds its contrast against the page and against no saturated fill.
+ * outside its edge. A control enclosed by a border is marked just inside it, on the control's own ground, so the
+ * mark never escapes the box to be clipped or covered by a neighbour, and stands out from a grey border it would
+ * barely darken if drawn over it. A component filling a control solid moves the mark clear outside its edge, since
+ * the focus colour holds its contrast against the page and against no saturated fill.
+ *
+ * A field carries both states at once as soon as an invalid value is being typed into it. The failure is told by the
+ * edge and the focus by the ring within it, so neither mark hides the other while the field holds the keyboard.
  */
+
+button, input, textarea, select {
+
+    &:focus-visible {
+        outline: var(--skin--outline-focus);
+        outline-offset: calc(-3 * var(--skin--border-width));
+    }
+
+}
 
 /* A button and a menu are boxed as a field is, so the controls of a form line up as one row of equal edges. */
 
 button, select {
-
     padding: var(--skin--spacing-025) var(--skin--spacing-050);
     border-style: var(--skin--border-style);
     border-radius: var(--skin--border-radius-025);
-
-    &:focus-visible {
-        outline: var(--skin--outline-focus);
-        outline-offset: calc(-2 * var(--skin--border-width));
-    }
-
 }
 
 /* A value, typed, picked or worked out, reads in the text colour, whatever colour the text around it takes. */
@@ -82,25 +88,12 @@ input, textarea, select {
      * A value is judged once the reader has had a say on it, so a required field left empty on arrival is not yet
      * marked as failed. A field the app itself rejects, as a server does a value its rules refuse, says so through
      * aria-invalid, which assistive technology announces as well, and is marked the same way from the moment it is
-     * set. The mark is drawn over the field's own border, so the failure reads as the edge of the field.
+     * set. The field's own border takes the failure colour, so the failure reads as the edge of the field.
      */
 
     &:user-invalid, &[aria-invalid="true"] {
         color: var(--skin--color-fail);
-        outline: var(--skin--outline-invalid);
-        outline-offset: calc(-1 * var(--skin--border-width));
-    }
-
-    /*
-     * Both marks are outlines, and a field carries both states at once as soon as an invalid value is being typed
-     * into it, so the focus mark is written after the invalid one and takes the single outline on offer for as long
-     * as the field holds the keyboard. What the value is worth goes on being said in colour, which the focus mark
-     * leaves standing, and a menu holding a choice the app rejected follows the same order as a typed field does.
-     */
-
-    &:focus-visible {
-        outline: var(--skin--outline-focus);
-        outline-offset: calc(-2 * var(--skin--border-width));
+        border-color: var(--skin--color-fail);
     }
 
 }
@@ -228,19 +221,27 @@ input, textarea {
         inline-size: var(--skin--scaling-100);
         block-size: var(--skin--scaling-100);
 
-        &:is(:user-invalid, [aria-invalid="true"], :focus-visible) {
+        /*
+         * The platform paints no border a failure could colour, so a failed box is ringed instead, held just clear
+         * of the box at the width the invalid outline token states. The focus ring takes its place while the box
+         * holds the keyboard, the one outline on offer going to the mark the reader is acting on.
+         */
+
+        &:is(:user-invalid, [aria-invalid="true"]) {
+            outline: var(--skin--outline-invalid);
             outline-offset: var(--skin--border-width);
         }
 
         /*
          * The platform draws a box with corners of its own and drops any radius stated for it, so a drawn focus mark
          * would square off around a rounded box. The mark takes the platform style instead, tracing the contour of the
-         * box in the focus colour at a width the browser settles. The invalid mark keeps the drawn style, so a failed
-         * box is still ringed at the width the invalid outline token states, held just clear of the box.
+         * box in the focus colour at a width the browser settles, just clear of the box.
          */
 
         &:focus-visible {
+            outline: var(--skin--outline-focus);
             outline-style: auto;
+            outline-offset: var(--skin--border-width);
         }
 
     }

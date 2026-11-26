@@ -38,11 +38,15 @@
  * rule reads it, and assigning it through {@link index.css css} rounds that element alone.
  *
  * **Marks** — `outlineFocus` and `outlineInvalid` are whole `outline` shorthand values rather than colours, so a rule
- * states the mark in one declaration and an app retuning the anchors carries it along. `outline-offset` is not part of
- * that shorthand, so a rule setting either mark states the offset alongside it, and a mark left at the offset the
- * platform gives the control will not sit where the rule expects. They pair with the {@link colors `colorFocus`} and
- * {@link colors `colorFail`} roles, which a consumer reaches for where it paints the mark itself. The focus mark does
- * not hold 3:1 against a fill in {@link colors `colorStrong`}, so a rule ringing such a control offsets it outside.
+ * states the mark in one declaration and an app retuning the anchors carries it along. The shorthand leaves out
+ * `outline-offset`, so a rule setting either mark states the offset too. They pair with the {@link colors `colorFocus`}
+ * and {@link colors `colorFail`} roles, which a consumer reaches for where it paints the mark itself.
+ *
+ * A field shows a failure by painting its own edge in `colorFail`, so the failure and the focus ring show together.
+ * `outlineInvalid` is for a control with no edge to colour, such as a checkbox or a radio button, and gives way to the
+ * focus ring while the control has the keyboard. The focus ring holds 3:1 neither against a fill in
+ * {@link colors `colorStrong`} nor against the edge of a field. A rule ringing a field draws it just inside the edge,
+ * and a rule ringing a filled control offsets it outside by the line width, where it holds 3:1 against the page.
  *
  * **Strokes** — `strokeWidth` is a bare number in viewport user units, so a glyph keeps its weight at any size.
  * `strokeWidthStrong` is the stroke counterpart of {@link typography `fontWeightStrong`}: a glyph set beside strong

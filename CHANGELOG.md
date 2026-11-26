@@ -17,6 +17,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   a code span longer than the line wraps within a box of its own, and a table wider than its container scrolls
   sideways within it. A component keeping a table header in view while the page scrolls restores the table display
   and visible overflow, since a table scrolling on its own would hold the header within itself
+- A focused field, button or menu now stands out from the others at a glance
+  ([#4](https://github.com/grafctory/skin/issues/4)): the focus ring is drawn just inside the control's grey edge
+  rather than over it, and a field rejecting its value keeps its edge in the failure colour while it has the keyboard
 
 ## [0.3.1](https://github.com/grafctory/skin/compare/v0.3.0...v0.3.1) - 2026-11-24
 

@@ -115,8 +115,9 @@
  *
  * `colorFocus` carries a value of its own per colour scheme, so that where the keyboard stands is told the same way
  * whatever an app brands with. It holds 3:1 on every surface and tint a ring is drawn against, a pressed fill
- * included, but against no solid fill, whether an accent or a step of the meaning scale: a control filled solid
- * takes its ring outside the fill, offset by the line width, where it holds 3:1 against the page.
+ * included, but against no solid fill, whether an accent or a step of the meaning scale, and it barely differs from
+ * the grey edge of a field. A field takes its ring just inside that edge, on its own ground, and a control filled
+ * solid takes it outside the fill, offset by the line width, where it holds 3:1 against the page.
  *
  * **Filled caution** — `colorOver` is what text takes over a fill painted in `colorWarn`: the page background, white
  * over the light gold and dark over the dark one. It is not the text over any other step: a fill painted in
