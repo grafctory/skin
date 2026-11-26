@@ -63,11 +63,14 @@
         line-height: var(--skin--line-height);
 
         /*
-         * Running text of every kind, from a paragraph to a list item, a cell or a caption, inherits wrapping that
-         * keeps a lone word off its last line. Only the style is set, so a run kept on one line still stays on it.
+         * Running text of every kind, from a paragraph to a list item or a caption, inherits wrapping that keeps a lone
+         * word off its last line and breaks a word too long for the line where it meets the edge, so an address or an
+         * identifier never widens its column. Only the wrapping style and the breaking are set, never the mode, so a
+         * run kept on one line, as a button label or a header cell is, still stays on it.
          */
 
         text-wrap-style: pretty;
+        overflow-wrap: anywhere;
 
         /* Greyscale antialiasing keeps macOS from emboldening text; other platforms ignore it. */
 

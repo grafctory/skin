@@ -10,6 +10,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased](https://github.com/grafctory/skin/compare/v0.3.1...HEAD)
 
+### Fixed
+
+- Long addresses and identifiers no longer widen their column and scroll the page sideways
+  ([#2](https://github.com/grafctory/skin/issues/2)): running text breaks a word too long for its line at the edge,
+  a code span longer than the line wraps within a box of its own, and a table wider than its container scrolls
+  sideways within it. A component keeping a table header in view while the page scrolls restores the table display
+  and visible overflow, since a table scrolling on its own would hold the header within itself
+
 ## [0.3.1](https://github.com/grafctory/skin/compare/v0.3.0...v0.3.1) - 2026-11-24
 
 ### Changed

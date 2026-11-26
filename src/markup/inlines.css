@@ -71,23 +71,21 @@ code, kbd, samp {
     font-family: var(--skin--font-family-mono);
 }
 
-code {
+/*
+ * A code span names one thing, so it is read as one word and moves to the next line whole rather than folding at a
+ * hyphen or a space. Only a span longer than the line wraps, within a box of its own, so it never widens the column.
+ * The mono face alone is too close to the text face to set it apart, so the span sits on a tint of its own ink,
+ * padded just enough to clear the glyphs. The share is an optical nudge below the colour scale: mixed from the ink
+ * rather than from a surface token, it darkens whatever it lies on, keeping the span apart on striped rows in either
+ * theme. Code within a preformatted block is left to the block, which keeps its line breaks and its stripe.
+ */
 
-    /*
-     * A code span names one thing, so it is read as one word rather than folded at a hyphen or a space. The mono face
-     * alone is too close to the text face to set it apart, so the span sits on a tint of its own ink, padded just
-     * enough to clear the glyphs. The share is an optical nudge below the colour scale: mixed from the ink rather
-     * than from a surface token, it darkens whatever it lies on, keeping the span apart on striped rows in either
-     * theme. Code within a preformatted block is left to the block, which keeps its line breaks and its stripe.
-     */
-
-    &:where(:not(pre > code)) {
-        padding: var(--skin--spacing-010) var(--skin--spacing-025);
-        border-radius: var(--skin--border-radius-025);
-        background-color: color-mix(in oklab, currentColor 8%, transparent);
-        white-space: nowrap;
-    }
-
+code:where(:not(pre > code)) {
+    display: inline-block;
+    max-width: 100%;
+    padding: var(--skin--spacing-010) var(--skin--spacing-025);
+    border-radius: var(--skin--border-radius-025);
+    background-color: color-mix(in oklab, currentColor 8%, transparent);
 }
 
 /*

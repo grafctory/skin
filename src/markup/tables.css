@@ -15,11 +15,16 @@
  */
 
 /*
- * Cells stand separate rather than collapsed, so each draws its own rule and a header cell kept in view while the rows
- * scroll carries the rule under it. A border is therefore stated on a cell: a row or a row group draws none of its own.
+ * A table wider than its container scrolls sideways within it rather than widening the page or squeezing its cells. A
+ * component keeping its header in view while the page scrolls restores the table display and visible overflow, since a
+ * table scrolling on its own would hold the header within itself. Cells stand separate rather than collapsed, so each
+ * draws its own rule and a header cell kept in view carries the rule under it. A border is therefore stated on a cell:
+ * a row or a row group draws none of its own, so a border set on one is ignored.
  */
 
 table {
+    display: block;
+    overflow-x: auto;
     width: 100%;
     max-width: 100%;
     border-collapse: separate;
@@ -52,6 +57,10 @@ td {
     text-align: start;
     vertical-align: top;
     border-bottom-style: var(--skin--border-style);
+
+    /* A word in a cell is kept whole, so a long address scrolls the table rather than breaking in a narrow column. */
+
+    overflow-wrap: normal;
 
     & > img {
         margin: 0;
