@@ -176,10 +176,11 @@ Running text wraps so that no lone word is left on its last line, and a heading 
 balanced, while text being typed keeps the platform wrapping. No token carries this choice: an app opting out writes
 `text-wrap-style: auto` in an ordinary rule, which outranks the design system wherever it reaches the page.
 
-Long addresses and identifiers never widen their column or scroll the page sideways. Running text breaks a word too
-long for its line at the edge, and a code span longer than the line wraps within its own box. A table wider than its
-container scrolls sideways within it and keeps every word in its cells whole. A component keeping a table header in
-view while the page scrolls sets `display: table` and `overflow: visible` on the table, or the header sticks inside it.
+Long addresses and identifiers never run past their column or scroll the page sideways. Running text breaks a word too
+long for its line at the edge, and a code span longer than the line wraps within its own box. A column sized to its
+content, as a count or a label is, keeps the width of its longest word. A table wider than its container scrolls
+sideways within it and keeps every word in its cells whole. A component keeping a table header in view while the page
+scrolls sets `display: table` and `overflow: visible` on the table, or the header sticks inside it.
 
 ### Other Tokens
 

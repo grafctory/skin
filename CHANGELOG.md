@@ -12,11 +12,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-- Long addresses and identifiers no longer widen their column and scroll the page sideways
+- Long addresses and identifiers no longer run past their column and scroll the page sideways
   ([#2](https://github.com/grafctory/skin/issues/2)): running text breaks a word too long for its line at the edge,
-  a code span longer than the line wraps within a box of its own, and a table wider than its container scrolls
-  sideways within it. A component keeping a table header in view while the page scrolls restores the table display
-  and visible overflow, since a table scrolling on its own would hold the header within itself
+  while a column sized to its content keeps the width of its longest word
+  ([#5](https://github.com/grafctory/skin/issues/5)), a code span longer than the line wraps within a box of its own,
+  and a table wider than its container scrolls sideways within it. A component keeping a table header in view while
+  the page scrolls restores the table display and visible overflow, or the header sticks inside the table
 - A focused field, button or menu now stands out from the others at a glance
   ([#4](https://github.com/grafctory/skin/issues/4)): the focus ring is drawn just inside the control's grey edge
   rather than over it, and a field rejecting its value keeps its edge in the failure colour while it has the keyboard

@@ -65,12 +65,13 @@
         /*
          * Running text of every kind, from a paragraph to a list item or a caption, inherits wrapping that keeps a lone
          * word off its last line and breaks a word too long for the line where it meets the edge, so an address or an
-         * identifier never widens its column. Only the wrapping style and the breaking are set, never the mode, so a
-         * run kept on one line, as a button label or a header cell is, still stays on it.
+         * identifier never runs past its column, while a column sized to its content, as a count or a label is, keeps
+         * the width of its longest word rather than shrinking to a single character. Only the wrapping style and the
+         * breaking are set, never the mode, so a button label or a header cell kept on one line still stays on it.
          */
 
         text-wrap-style: pretty;
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
 
         /* Greyscale antialiasing keeps macOS from emboldening text; other platforms ignore it. */
 
